@@ -1,0 +1,22 @@
+name: mi workflow
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  mi-trabajo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: comprobar version de git
+        run: git --version
+
+      - name: comprobar version de python3
+        run: python3 --version
+
+      - name: revisar archivos existentes
+        run: ls -la
