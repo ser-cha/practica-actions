@@ -21,15 +21,15 @@ jobs:
       - name: revisar archivos existentes
         run: ls -la
 
-jobs2:
-  runs-on: ubuntu-latest
+  jobs2:
+    runs-on: ubuntu-latest
 
-  steps:
-    - name: descargar el repositorio
-      uses: actions/checkout@v4
+    steps:
+      - name: descargar el repositorio
+        uses: actions/checkout@v4
 
-    - name: comprobar si existe el archivo README y el archivo temporal
-      run: |
-        test -f README.md && echo "README.md existe"
-        echo "prueba temporal" > temp.txt
-        cat temp.txt
+      - name: comprobar si existe el archivo README y el archivo temporal
+        run: |
+          test -f README.md && echo "README.md existe"
+          echo "prueba temporal" > temp.txt
+          cat temp.txt
