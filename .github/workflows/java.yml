@@ -13,26 +13,26 @@ jobs:
       - name: Descargar repositorio
         uses: actions/checkout@v4
 
-      - name: configurar Java
+      - name: Configurar Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '21'
 
-      - name: guardar en directorio
+      - name: Guardar en directorio
         run: mkdir -p solo-java
 
-      - name: compilar los archivos .java
-        run: actions/javac -d out src/*.java
+      - name: Compilar los archivos .java
+        run: javac -d out src/*.java
 
-      - name: crear Jar
+      - name: Crear Jar
         run: jar cfe out/nombre_archivo.jar Hola -C out .
 
-      - name: ejecutar Jar
+      - name: Ejecutar Jar
         run: java -jar out/nombre_archivo.jar
 
-      - name: subir artefacto
-        uses: actions/upload-artifact
+      - name: Subir artefacto
+        uses: actions/upload-artifact@v4
         with:
           name: aplicacion-java
           path: out/nombre_archivo.jar
