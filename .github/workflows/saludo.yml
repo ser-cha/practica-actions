@@ -1,0 +1,24 @@
+name: saludo-propio
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  saludo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: mostrar mensaje
+        run: echo "Estructura clara"
+
+      - name: ver fecha en el runner
+        run: date
+
+  comprobar-espacio-y-archivos:
+      runs-on: ubuntu-latest
+      steps:
+        - name: comrpobar espacio libre en disco runner
+          run: df -h
+
+        - name: listar archivos y carpetas en directorio actual
+          run: ls -la
