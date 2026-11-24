@@ -1,0 +1,38 @@
+name: Compilacion Java
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  compilar:
+    name: compilar y ejecutar Java
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: configurar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: guardar en directorio
+        run: mkdir -p solo-java
+
+      - name: compilar los archivos .java
+        uses: actions/javac -d out src/*.java
+
+      - name: crear Jar
+        uses: jar cfe out/nombre_archivo.jar Hola -C out .
+
+      - name: ejecutar Jar
+        uses: java -jar out/nombre_archivo.jar
+
+      - name: subir artefacto
+        uses: actions/upload-artifact
+        with:
+          name: aplicacion-java
+          path: out/nombre_archivo.jar
