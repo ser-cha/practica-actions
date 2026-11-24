@@ -23,13 +23,13 @@ jobs:
         run: mkdir -p solo-java
 
       - name: compilar los archivos .java
-        uses: actions/javac -d out src/*.java
+        run: actions/javac -d out src/*.java
 
       - name: crear Jar
-        uses: jar cfe out/nombre_archivo.jar Hola -C out .
+        run: jar cfe out/nombre_archivo.jar Hola -C out .
 
       - name: ejecutar Jar
-        uses: java -jar out/nombre_archivo.jar
+        run: java -jar out/nombre_archivo.jar
 
       - name: subir artefacto
         uses: actions/upload-artifact
